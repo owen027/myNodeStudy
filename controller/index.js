@@ -1,3 +1,5 @@
+const User = require('../service/user')
+const svgCaptcha = require('svg-captcha')
 // 首页
 exports.showIndex = async (req, res, next) =>{
     // res.status(200).send('hello world Owen')
@@ -16,8 +18,48 @@ exports.showLogin = async (req, res, next) => {
 exports.signup = async (req, res, next) => {
     // 接收前端数据
     console.log(req.body)
+    const { username, password, nickname, verify_code } = req.body
+
+
+    if (await User.findUserName({username})) {
+        res.status(200).json({
+            code: 2,
+            message: '用户已存在'
+        })
+    }
+    //校验 昵称
+
+    if (await User.findNickName({username})){
+        res.status(200).json({
+            code:2,
+            message:'昵称已存在'
+        })
+    }
+    
+    //创建用户
+    const createUser = await User.create({
+        username,
+        password,
+        nickname
+    })
+
+    if (createUser.id) {
+        res.status(200).json({
+            code: 0,
+            message: ''
+        })
+    }
+
+
+
 }
 
+// 验证码
+exports.captcha = async (req,res,next) =>{
+    const captcha = svgCaptcha.create() //创建验证码
+    res.type('svg') //定义响应类型
+    res.status(200).send(captcha.data)
+}
 
 
 
