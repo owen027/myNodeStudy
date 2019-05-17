@@ -2,14 +2,13 @@ const express = require('express')
 const indexControl = require('../controller')
 
 const router = express()
-
-
-
+ 
 router.get('/', indexControl.showIndex) // 首页
-      .get('/login', indexControl.showLogin) // 登录页
+
+router.get('/login', indexControl.showLogin) // 登录页
       .post('/signup', indexControl.signup) // 登录接口
-      .get('/questions/new', indexControl.showLogin)
-      .get('/captcha'.indexControl.captcha)
+    //   .get('/questions/new', indexControl.showLogin)
+    //   .get('/captcha',indexControl.captcha)
 /* 
 // 问题编辑
 router.get('/questions/:id/edit', (req, res, next) => {

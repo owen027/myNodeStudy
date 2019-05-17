@@ -1,14 +1,11 @@
 const User = require('../service/user')
-const svgCaptcha = require('svg-captcha')
+// const svgCaptcha = require('svg-captcha')
 // 首页
-exports.showIndex = async (req, res, next) =>{
-    // res.status(200).send('hello world Owen')
-    // 第一个文件名，第二个传参数
-    res.render('index.html', {
-                name: 'Owen'
-            })    
+exports.showIndex = async (req, res, next) => {
+    res.render('index.html',{
+        name: 'Owen'
+    })
 }
-
 // 注册登录
 exports.showLogin = async (req, res, next) => {
     res.render('login.html')
@@ -50,17 +47,15 @@ exports.signup = async (req, res, next) => {
         })
     }
 
-
-
 }
 
-// 验证码
+/* // 验证码
 exports.captcha = async (req,res,next) =>{
     const captcha = svgCaptcha.create() //创建验证码
     res.type('svg') //定义响应类型
     res.status(200).send(captcha.data)
 }
-
+ */
 
 
 // 创建问题
