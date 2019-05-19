@@ -1,5 +1,5 @@
 const User = require('../service/user')
-// const svgCaptcha = require('svg-captcha')
+const svgCaptcha = require('svg-captcha')
 // 首页
 exports.showIndex = async (req, res, next) => {
     res.render('index.html',{
@@ -49,13 +49,13 @@ exports.signup = async (req, res, next) => {
 
 }
 
-/* // 验证码
+// 验证码
 exports.captcha = async (req,res,next) =>{
     const captcha = svgCaptcha.create() //创建验证码
     res.type('svg') //定义响应类型
-    res.status(200).send(captcha.data)
+    res.status(200).send(captcha.data) //发布响应结果
 }
- */
+
 
 
 // 创建问题

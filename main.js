@@ -1,7 +1,7 @@
 const path = require('path')
 const express = require('express')
 const nunjucks = require('nunjucks') //模板引擎
-const router = require('./router')
+const router = require('./router/')
 
 const app = express()
 const resolve = dir => path.resolve(__dirname,  dir)
@@ -20,13 +20,14 @@ nunjucks.configure(resolve('./views/'), {
 app.use(express.urlencoded({
     extended:true
 }))
+
+app.use(router)
+
 // 接收 application/json 格式数据 
 app.use(express.json())
 
- app.use(router)
-
 app.listen(3001,() =>{
-    console.log('服务启动成功')
-    console.log('http://localhost:3001/')
+console.log('服务启动成功')
+console.log('http://localhost:3001/')
 })
 
