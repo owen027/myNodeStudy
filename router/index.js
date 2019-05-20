@@ -1,6 +1,6 @@
 const express = require('express')
 const indexControl = require('../controller')
-
+const User = require('../controller/user')
 // 注意是引用 Router
 const router = express.Router()
  
@@ -8,7 +8,8 @@ router.get('/',indexControl.showIndex) // 首页
 
 router.get('/login', indexControl.showLogin) // 登录页
       .post('/signup', indexControl.signup) // 登录接口
-      .get('/captcha',indexControl.captcha)
+      .get('/captcha',indexControl.captcha) // 验证码
+      .get('/users/check', User.check)
       //   .get('/questions/new', indexControl.showLogin)
 /* 
 // TODO 
