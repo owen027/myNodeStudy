@@ -2,10 +2,17 @@ const path = require('path')
 const express = require('express')
 const nunjucks = require('nunjucks') //模板引擎
 const router = require('./router/')
+const session = require('express-session')
 
 const app = express()
 const resolve = dir => path.resolve(__dirname,  dir)
 
+//配置 session
+app.use(session({
+    secret:'keyborad cat',
+    resave:false,
+    saveUninitialized:true
+}))
 // 开放 public 资源
 app.use('/public/',express.static(resolve('./public/')))
 app.use('/node_modules/', express.static(resolve('./node_modules/')))
