@@ -9,6 +9,7 @@ router.get('/',indexControl.showIndex) // 首页
 router.get('/login', indexControl.showLogin) // 登录页
       .post('/signup', indexControl.signup) // 登录接口
       .get('/captcha',indexControl.captcha)
+      .get('/captcha/check',indexControl.checkCaptcha)
       //   .get('/questions/new', indexControl.showLogin)
 /* 
 // TODO 

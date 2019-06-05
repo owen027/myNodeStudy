@@ -55,6 +55,14 @@ exports.captcha = async (req,res,next) =>{
     res.type('svg') //定义响应类型
     res.status(200).send(captcha.data) //发布响应结果
 }
+exports.checkCaptcha = async (req,res,next) =>{
+  const {captcha} = req.query
+  const {captcha: sessionCaptcha} = req.session
+    let ret = false
+    captcha.toLowerCase() !== sessionCaptcha.text.toLowerCase() && (ret = true)
+      return res.status(200).send(ret)
+  
+}
 
 
 
