@@ -17,7 +17,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "express-session": "^1.16.1",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "jquery-validate": "^2.0.0",
     "svg-captcha": "^1.4.0"
   }
